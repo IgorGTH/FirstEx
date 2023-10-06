@@ -59,3 +59,65 @@ $(document).on('click', '.viewColaboradorBtn', function () {
       }                                                             
   });
 });
+
+$(document).on('click', '.editColaboradorBtn', function () {
+
+  var colb_id = $(this).val();
+  $.ajax({
+      type: "GET",
+      url: "GetId.php?colb_id=" + colb_id,
+      success: function (response) {
+
+          var res = jQuery.parseJSON(response);
+          if(res.status == 404) {
+
+              alert(res.message);
+          }else if(res.status == 200){
+
+
+                  $('input[name="colb_id"]').val(res.data.Id);
+                  $('input[name="nome"]').val(res.data.Nome);
+                  $('input[name="email"]').val(res.data.Email);
+                  $('textarea[name="morada"]').val(res.data.Morada);
+
+                  
+                  $('#EditColaborador').modal('show');
+          }
+      }                                                             
+  });
+});
+
+$(document).on('submit', '#EditColaborador', function (e) {  //Funcao que altera os dados na base de dados e que faz a tabela atualizar
+  e.preventDefault();
+
+    var formData = new FormData(document.getElementById('editarColaboradorForm'));
+    formData.append("editar_colaborador", true);
+
+         $.ajax({
+          type: "POST",
+          url: "Colaboradores/Edit.php",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            console.log('AJAX request successful');
+            var res = jQuery.parseJSON(response);
+
+            if (res.status == 422) {
+                $('#errorMessageUpdate').removeClass('d-none');
+                $('#errorMessageUpdate').text(res.message); 
+
+            } else if (res.status == 200) {
+
+                $('#errorMessageUpdate').addClass('d-none');
+                $('#EditColaborador').modal('hide');
+                $('#editarColaboradorForm')[0].reset();
+
+                alert(res.message);
+
+                $('#ColbTable').load(location.href + " #ColbTable");
+            }
+          }
+      });
+    
+});

@@ -93,6 +93,46 @@
     </div>
 
     <!-- End View Colaborador Modal-->
+
+    <div class="modal fade" id="EditColaborador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id= "editarColaboradorForm">                    
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Colaborador</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="errorMessageUpdate" class="alert alert-danger d-none"></div>
+
+                    <input type="hidden" name="colb_id" id="id"> <!-- Id de cada colaborador -->
+
+                    <div class="mb-3"><!-- Campo Nome -->
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome">
+                    </div>
+                    
+                    <div class="mb-3"><!-- Campo Email-->
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control"1 placeholder="nome@example.com" name="email" >
+                    </div>
+
+                    <div class="mb-3"><!-- Campo Morada -->
+                        <label class="form-label">Morada</label>
+                        <textarea class="form-control" name="morada" rows="3"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning">Save</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- End Edit Colaborador Modal-->
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
@@ -126,7 +166,7 @@
                                         <td><?= $colaborador['Email'] ?></td>
                                         <td>                                                                           
                                             <button type="button" value="<?=$colaborador['Id'];?>" class="viewColaboradorBtn bi bi-info-circle btn btn-info btn-sm"></button>
-                                            <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-pencil-square btn btn-warning btn-sm"></button>                                            
+                                            <button type="button" value="<?=$colaborador['Id'];?>" class="editColaboradorBtn bi bi-pencil-square btn btn-warning btn-sm"></button>                                            
                                             <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-trash btn btn-danger btn-sm"></button>                                
                                         </td>
                                     </tr>

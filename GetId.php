@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'dbcon.php';   
 
 //Pegar o Id do funcionario que queremos editar ou ver as informações
