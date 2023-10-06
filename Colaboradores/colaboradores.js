@@ -34,3 +34,28 @@ $(document).on('submit', '#AddColaborador', function (e) {  //Funcao que insere 
       
 });
 
+//Execução do botão view para abrir o modal com as informacoes do colaborador selecionado
+$(document).on('click', '.viewColaboradorBtn', function () {
+
+  var colb_id = $(this).val();
+  $.ajax({
+      type: "GET",
+      url: "GetId.php?colb_id=" + colb_id,
+      success: function (response) {
+
+          var res = jQuery.parseJSON(response);
+          if(res.status == 404) {
+
+              alert(res.message);
+          }else if(res.status == 200){
+
+                  $('input[name="colb_id"]').val(res.data.ID);
+                  $('input[name="nome"]').val(res.data.Nome);
+                  $('input[name="email"]').val(res.data.Email);
+                  $('textarea[name="morada"]').val(res.data.Morada);
+
+                  $('#ViewColaborador').modal('show');
+          }
+      }                                                             
+  });
+});

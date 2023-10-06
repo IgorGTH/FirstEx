@@ -54,6 +54,45 @@
 
     <!-- End Add Colaborador Modal-->
     
+
+    <div class="modal fade" id="ViewColaborador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id= "verColaboradorForm">                    
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Informações</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="errorMessage" class="alert alert-danger d-none"></div>
+
+                    <input type="hidden" name="colb_id" id="id"> <!-- Id de cada colaborador -->
+
+                    <div class="mb-3"><!-- Campo Nome -->
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome" readonly>
+                    </div>
+                    
+                    <div class="mb-3"><!-- Campo Email-->
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control"1 placeholder="nome@example.com" name="email" readonly>
+                    </div>
+
+                    <div class="mb-3"><!-- Campo Morada -->
+                        <label class="form-label">Morada</label>
+                        <textarea class="form-control" name="morada" rows="3" readonly></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- End View Colaborador Modal-->
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
@@ -86,7 +125,7 @@
                                         <td><?= $colaborador['Nome'] ?></td>
                                         <td><?= $colaborador['Email'] ?></td>
                                         <td>                                                                           
-                                            <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-info-circle btn btn-info btn-sm"></button>
+                                            <button type="button" value="<?=$colaborador['Id'];?>" class="viewColaboradorBtn bi bi-info-circle btn btn-info btn-sm"></button>
                                             <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-pencil-square btn btn-warning btn-sm"></button>                                            
                                             <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-trash btn btn-danger btn-sm"></button>                                
                                         </td>
@@ -113,4 +152,4 @@
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="Colaboradores/teste.js"></script>
+<script src="Colaboradores/colaboradores.js"></script>
