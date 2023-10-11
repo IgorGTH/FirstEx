@@ -121,3 +121,34 @@ $(document).on('submit', '#EditColaborador', function (e) {  //Funcao que altera
       });
     
 });
+
+//Função que filtra a tabela de acordo com a checkbox
+$(document).ready(function() {
+
+  $('#ativosCheckbox').change(function() {
+
+    const isChecked = $(this).is(':checked');
+
+
+    const query = isChecked
+      ? "SELECT * FROM colaboradores WHERE Ativo = 'T'"
+      : "SELECT * FROM colaboradores WHERE Ativo = 'F'";
+
+    $.ajax({
+      url: 'Colaboradores/get_colaboradores.php',
+      method: 'POST',
+      data: { query: query },
+      success: function(data) {
+      console.log('AJAX request successful');
+
+      $('#ColbTable tbody').empty();
+        
+        // Append the new data
+      $('#ColbTable tbody').html(data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  });
+});

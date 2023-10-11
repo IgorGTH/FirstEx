@@ -136,9 +136,13 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Colaboradores<a type="button" id="exampleModalLabel" class="btn btn-outline-success float-end"  data-bs-toggle="modal" data-bs-target="#AddColaborador" >
-                        Adicionar Colaborador 
-                    </a></h5>
+                <h5 class="card-title">Colaboradores               
+                    <div class="form-check float-end ">
+                        <label for="ativosCheckbox" class="form-check-label">Ativos</label>
+                        <input type="checkbox" id="ativosCheckbox" name="ativosCheckbox" class="form-check-input mx-2" checked>
+                        <a type="button" id="exampleModalLabel" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#AddColaborador">Adicionar Colaborador</a>
+                    </div>
+                </h5>
             </div>           
             <div class="card-body">
                 <table  id="ColbTable" class="table table-striped">
@@ -151,28 +155,29 @@
                     </thead>
                     <tbody class="table-group-divider">
                     <?php
-                            require 'dbcon.php';
+                            require 'dbcon.php';                         
 
+                            
                             $query = "SELECT * FROM colaboradores WHERE Ativo = 'T'";
-                            $query_run = mysqli_query($con, $query);
-
-                            if(mysqli_num_rows($query_run) > 0)
-                            {
-                                foreach($query_run as $colaborador)
-                                {
-                                    ?>
-                                    <tr>
-                                        <td><?= $colaborador['Nome'] ?></td>
-                                        <td><?= $colaborador['Email'] ?></td>
-                                        <td>                                                                           
-                                            <button type="button" value="<?=$colaborador['Id'];?>" class="viewColaboradorBtn bi bi-info-circle btn btn-info btn-sm"></button>
-                                            <button type="button" value="<?=$colaborador['Id'];?>" class="editColaboradorBtn bi bi-pencil-square btn btn-warning btn-sm"></button>                                            
-                                            <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-trash btn btn-danger btn-sm"></button>                                
-                                        </td>
-                                    </tr>
-                                    <?php
+                            $query_run = mysqli_query($con, $query);     
+                              if (mysqli_num_rows($query_run) > 0) {
+                                foreach ($query_run as $colaborador) {
+                                  ?>
+                                  <tr>
+                                    <td><?= $colaborador['Nome'] ?></td>
+                                    <td><?= $colaborador['Email'] ?></td>
+                                    <td>                                                                           
+                                      <button type="button" value="<?=$colaborador['Id'];?>" class="viewColaboradorBtn bi bi-info-circle btn btn-info btn-sm"></button>
+                                      <button type="button" value="<?=$colaborador['Id'];?>" class="editColaboradorBtn bi bi-pencil-square btn btn-warning btn-sm"></button>                                            
+                                      <button type="button" value="<?=$colaborador['Id'];?>" class="bi bi-trash btn btn-danger btn-sm"></button>                                
+                                    </td>
+                                  </tr>
+                                  <?php
                                 }
-                            }
+                              }else{
+                         
+                              }
+                            
                             ?>
                     </tbody>
                 </table>
