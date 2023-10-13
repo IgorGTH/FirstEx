@@ -2,7 +2,7 @@
 session_start();
 require '../dbcon.php'; 
 
-if(isset($_POST['salvar_colaborador']))//Funcao que Executa o comando SQL
+if(isset($_POST['salvar_colaborador']))//Funcao que Executa o comando SQL caso o utilizador clique no botão salvar
 {
     $nome = mysqli_real_escape_string($con, $_POST['nome']);
     $email = mysqli_real_escape_string($con, $_POST['email']);

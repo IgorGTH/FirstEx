@@ -152,3 +152,30 @@ $(document).ready(function() {
     });
   });
 });
+
+
+//Funcao que desativa e ativa os colaboradores
+$(document).on('click', '.DeleteColaboradorBtn', function (e) {
+  e.preventDefault();
+  
+  if(confirm('Tens a certeza que queres Ativar/Desativar este colaborador?')) {
+  var colb_id = $(this).val();
+  $.ajax({
+    type: "POST",
+    url: "Colaboradores/Delete.php",
+    data: {
+      'desativar_colaborador': true,
+      'colb_id': colb_id
+    },
+    success: function (response) {
+      var res = jQuery.parseJSON(response);
+      if (res.status == 500) {
+      } else {
+        alert(res.message);
+        $('#ColbTable').load(location.href + " #ColbTable");
+        document.getElementById("ativosCheckbox").checked = true;
+      }
+    }
+  });
+  }
+  });
