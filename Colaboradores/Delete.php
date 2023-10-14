@@ -2,7 +2,7 @@
 session_start();
 require '../dbcon.php'; 
 
-if(isset($_POST['desativar_colaborador']))
+if(isset($_POST['desativar_colaborador']))//Funcao que Executa o comando SQL caso o utilizador clique no botão  de desativar/ativar
  {
     $colb_id = mysqli_real_escape_string($con, $_POST['colb_id']);
     

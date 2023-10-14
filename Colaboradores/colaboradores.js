@@ -143,7 +143,7 @@ $(document).ready(function() {
 
       $('#ColbTable tbody').empty();
         
-        // Append the new data
+
       $('#ColbTable tbody').html(data);
       },
       error: function(xhr, status, error) {
@@ -179,3 +179,11 @@ $(document).on('click', '.DeleteColaboradorBtn', function (e) {
   });
   }
   });
+
+  //Funcao que ativa a datatable
+  $(document).ready(function() {
+    $('#ColbTable').DataTable({
+        "lengthMenu": [5, 10, 25, 50], //Numero de registros que se pode visualizar por página
+        "pageLength": 5, //Numero padrao de registros 
+    });
+});

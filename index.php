@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css”/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
   <body>
 
@@ -136,13 +137,14 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Colaboradores               
+                <h5 class="card-title">Colaboradores 
+           
                     <div class="form-check float-end ">
                         <label for="ativosCheckbox" class="form-check-label">Ativos</label>
                         <input type="checkbox" id="ativosCheckbox" name="ativosCheckbox" class="form-check-input mx-2" checked>
                         <a type="button" id="exampleModalLabel" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#AddColaborador">Adicionar Colaborador</a>
                     </div>
-                </h5>
+                </h5>               
             </div>           
             <div class="card-body">
                 <table  id="ColbTable" class="table table-striped">
@@ -155,7 +157,7 @@
                     </thead>
                     <tbody class="table-group-divider">
                     <?php
-                            require 'dbcon.php';                         
+                            require 'dbcon.php';                   
 
                             
                             $query = "SELECT * FROM colaboradores WHERE Ativo = 'T'";
@@ -166,7 +168,7 @@
                                   ?>
                                   <?php
                                     $ativo = $colaborador['Ativo'];
-                                    $buttonClass = $ativo === 'T' ? 'bi bi-arrow-bar-left btn btn-danger bi bi-arrow-bar-left' : 'bi bi-arrow-bar-right btn btn-success';
+                                    $buttonClass = $ativo === 'T' ? 'bi bi-x-lg btn btn-danger bi bi-arrow-bar-left' : 'bi bi-check-lg btn btn-success';
                                     ?>
                                   <tr>
                                     <td><?= $colaborador['Nome'] ?></td>
@@ -201,4 +203,6 @@
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="Colaboradores/colaboradores.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="Colaboradores/colaboradores.js"></script>>

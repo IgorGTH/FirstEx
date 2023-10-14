@@ -1,6 +1,7 @@
 <?php
 require '../dbcon.php';
 
+//Este ficheiro vai atualizar a tabela quando a filtracão dos colaboradores ativos/desativos for ativada
 if (isset($_POST['query'])) {
     $query = $_POST['query'];
     $query_run = mysqli_query($con, $query);
@@ -10,7 +11,7 @@ if (isset($_POST['query'])) {
           ?>
           <?php
             $ativo = $colaborador['Ativo'];
-            $buttonClass = $ativo === 'T' ? 'bi bi-arrow-bar-left btn btn-danger bi bi-arrow-bar-left' : 'bi bi-arrow-bar-right btn btn-success';
+            $buttonClass = $ativo === 'T' ? 'bi bi-x-lg btn btn-danger bi bi-arrow-bar-left' : 'bi bi-check-lg btn btn-success';
             ?>
           <tr>
             <td><?= $colaborador['Nome'] ?></td>
@@ -24,8 +25,5 @@ if (isset($_POST['query'])) {
           <?php
         }
       }
-} else {
-
-    echo "No query provided.";
 }
 ?>
